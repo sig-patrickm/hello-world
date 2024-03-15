@@ -1,0 +1,34 @@
+name: My Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    continue-on-error: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: "run build script"
+        run: build.sh
+
+      - name: "run unit tests"
+        run: unit-test.sh
+
+  scan:
+    name: Scan
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: "perform software security scan"
+        run: broken-scanner.sh
