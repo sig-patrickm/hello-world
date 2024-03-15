@@ -19,7 +19,7 @@ jobs:
         run: bash build.sh
 
       - name: "run unit tests"
-        run: bash unit-test.sh
+        run: bash unit-tests.sh
 
   scan:
     name: Scan
